@@ -67,6 +67,10 @@ public:
     {
         this.pf.pushval(name, text!T(val));
     }
+    void read()
+    {
+        this.pf.reload();
+    }
     void save()
     {
         this.pf.writeContentBuffer();
