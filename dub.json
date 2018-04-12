@@ -1,0 +1,11 @@
+{
+	"name": "pz-config",
+	"authors": [
+		"Reece Jones"
+	],
+	"description": "A simple library for parsing config files with the aim of quick, and easy usability with little cost to speed and abstraction.",
+	"copyright": "Copyright © 2018, Reece Jones",
+	"license": "MIT",
+	"targetType": "library",
+	"targetName": "pz"
+}

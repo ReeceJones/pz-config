@@ -1,0 +1,9 @@
+# this is a comment
+another2 5
+another4 6.9
+another3 false
+# this is another comment
+another5 7.9
+ayylmao -1
+another1 uhawigbauwg
+test 100
