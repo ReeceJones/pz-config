@@ -1,4 +1,7 @@
+
+
 # this is a comment
+
 another2 5
 another4 6.9
 another3 false
@@ -6,4 +9,10 @@ another3 false
 another5 7.9
 ayylmao -1
 another1 uhawigbauwg
-test 100
+
+# this is a story all about my meme
+
+another6 1, 2, 3, 4
+another7 this, is, an, array
+
+test 200

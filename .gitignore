@@ -12,3 +12,5 @@ pz-config-test-*
 *.o
 *.obj
 *.lst
+*.lib
+*.a

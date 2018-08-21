@@ -19,16 +19,25 @@ public:
         this.pf = new PzFile(filename, param);
     }
     auto getValue(T)(string name) 
-                      if (T.stringof == uint.stringof     || T.stringof == int.stringof
-                        || T.stringof == ulong.stringof   || T.stringof == long.stringof
-                        || T.stringof == ushort.stringof  || T.stringof == short.stringof
-                        || T.stringof == byte.stringof    || T.stringof == ubyte.stringof
-                        || T.stringof == float.stringof   || T.stringof == double.stringof)
+                      if (__traits(isArithmetic, T))
     {
         auto v = this.pf.findln(name);
         if (v == null)
             return cast(T)null;
         return to!T(v);
+    }
+    T[] getValues(T)(string name)
+                    if (__traits(isArithmetic, T))
+    {
+        import std.algorithm.iteration, std.array, std.string, std.stdio;
+
+        auto v = this.pf.findln(name);
+        if (v == null)
+            return cast(T[])null;
+
+        auto values = v.split(",");
+        auto f = values.map!(a => to!T(a.strip)).array;
+        return f;
     }
 
     auto getValue(T)(string name) 
@@ -55,14 +64,22 @@ public:
             return null;
         return dtext!T(v);
     }
-    auto getValue(T)(string name) 
-                    if (T.stringof == bool.stringof)
+
+    T[] getValues(T)(string name)
+                    if (T.stringof == string.stringof
+                    || T.stringof == wstring.stringof
+                    || T.stringof == dstring.stringof)
     {
+        import std.algorithm.iteration, std.array, std.string, std.stdio;
+
         auto v = this.pf.findln(name);
         if (v == null)
-            return false;
-        return parse!T(v);
+            return cast(T[])null;
+
+        auto values = v.split(",");
+        return values.map!(a => text!T(a.strip)).array;
     }
+
     void writeConfig(T)(string name, T val)
     {
         this.pf.pushval(name, text!T(val));

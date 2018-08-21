@@ -24,7 +24,10 @@
 //     writeln(pz.getValue!int("another2"));
 //     writeln(pz.getValue!float("another5"));
 //     writeln(pz.getValue!string("another1"));
-//     pz.writeConfig("test", 100);
+//     writeln(pz.getValues!(int)("another6"));
+//     writeln(pz.getValues!(string)("another7"));
+//     pz.writeConfig("test", 200);
 //     pz.save();
 // }
+
 import pz.file, pz.config;
